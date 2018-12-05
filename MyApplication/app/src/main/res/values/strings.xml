@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DuAnGiuaKy</string>
+    <string name="name_brand"> Brand name</string>
+    <string name="title_sub_view_add" >ADD</string>
+    <string name="title_btn_add">Add</string>
+    <string name="title_btn_save">Save</string>
+    <string name="title_btn_delete">delete</string>
+    <string name="title_btn_cancel">cancel</string>
+    <string name="name_divice">Divice name</string>
+    <string name="price_divice">Divice price</string>
+    <string name="storage_divice">Divice internal storage</string>
+    <string name="aubout">ABOUT</string>
+    <string name="exit">EXIT</string>
+    <string name="modify">Modify</string>
+    <string name="delete">Delete</string>
+</resources>
