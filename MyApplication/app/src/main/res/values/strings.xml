@@ -28,4 +28,5 @@
     <string name="list_brand">List brand</string>
     <string name="list_divice">List divice</string>
     <string name="id_brand">ID</string>
+    <string name="warring_delete_brand">Brand has some divice. Can\'t delete!!!</string>
 </resources>

@@ -188,7 +188,7 @@ public class sub_divice extends AppCompatActivity {
         arrStorageNumber.add(32);
         arrStorageNumber.add(64);
         arrStorageNumber.add(128);
-        arrStorageNumber.add(265);
+        arrStorageNumber.add(256);
         for (int item: arrStorageNumber
              ) {
             arrStorageString.add(item + " GB");
@@ -244,7 +244,8 @@ public class sub_divice extends AppCompatActivity {
                             spinner.setSelection(i);
                         }
                     }
-                    imageView.setImageBitmap(ByteArrayToBitmap(divice.getImageDivice()));
+                    bitmap = ByteArrayToBitmap(divice.getImageDivice());
+                    imageView.setImageBitmap(bitmap);
                 }
 
             }

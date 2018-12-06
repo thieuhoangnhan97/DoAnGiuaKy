@@ -14,12 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.List;
 
 import thieuhoang.nhan.myapplication.R;
 import thieuhoang.nhan.myapplication.db.AppDatabase;
 import thieuhoang.nhan.myapplication.db.entity.Brand;
+import thieuhoang.nhan.myapplication.db.entity.Divice;
 
 import static thieuhoang.nhan.myapplication.Constant.*;
 
@@ -33,6 +36,7 @@ public class sub_brand extends AppCompatActivity {
     Intent intent;
     Bitmap bitmap;
     Brand brand;
+    int number;
 
 
 
@@ -108,19 +112,26 @@ public class sub_brand extends AppCompatActivity {
         });
 
         btnDelete.setOnClickListener(v->{
-            new AsyncTask<Void,Void,Integer>(){
+            if(number > 0){
+                Toast.makeText(this,getResources().getString(R.string.warring_delete_brand),Toast.LENGTH_LONG).show();
+            }
+            else {
+                new AsyncTask<Void,Void,Integer>(){
 
-                @Override
-                protected Integer doInBackground(Void... voids) {
-                    return db.brandDao().delete(brand);
-                }
+                    @Override
+                    protected Integer doInBackground(Void... voids) {
+                        return db.brandDao().delete(brand);
+                    }
 
-                @Override
-                protected void onPostExecute(Integer integer) {
-                    super.onPostExecute(integer);
-                    finish();
-                }
-            }.execute();
+                    @Override
+                    protected void onPostExecute(Integer integer) {
+                        super.onPostExecute(integer);
+                        finish();
+                    }
+                }.execute();
+            }
+
+
         });
     }
 
@@ -137,6 +148,7 @@ public class sub_brand extends AppCompatActivity {
         db = AppDatabase.getInstance(this);
         intent = getIntent();
         getBrandById();
+        loadAllDivice();
 
     }
 
@@ -197,6 +209,21 @@ public class sub_brand extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    void loadAllDivice(){
+        new AsyncTask<Void,Void,List<Divice>>(){
+
+            @Override
+            protected List<Divice> doInBackground(Void... voids) {
+                return db.diviceDao().getDivcesByIDBrand(intent.getLongExtra(BRAND,0));
+            }
+
+            @Override
+            protected void onPostExecute(List<Divice> divices) {
+                super.onPostExecute(divices);
+                number = divices.size();
+            }
+        }.execute();
     }
 
 

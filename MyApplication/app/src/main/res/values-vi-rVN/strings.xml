@@ -26,4 +26,6 @@
     <string name="Sai_Gon_Technology_University">Đại học công nghệ Sài Gòn</string>
     <string name="list_brand">Danh sách nhãn hiệu</string>
     <string name="list_divice">Danh sách thiết bị</string>
+    <string name="id_brand">Mã</string>
+    <string name="warring_delete_brand">"Nhãn hiệu có một số thiết. Không thể xoá! bị "</string>
 </resources>
