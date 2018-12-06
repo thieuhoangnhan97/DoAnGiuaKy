@@ -2,6 +2,7 @@ package thieuhoang.nhan.myapplication.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -24,7 +25,7 @@ import static thieuhoang.nhan.myapplication.Constant.*;
 
 
 public class sub_brand extends AppCompatActivity {
-    TextView title;
+    TextView title,txtid;
     ImageView imageView;
     EditText edtName;
     Button btnSave,btnModify,btnDelete,btnCancel,btnUpdate;
@@ -132,6 +133,7 @@ public class sub_brand extends AppCompatActivity {
         btnDelete = findViewById(R.id.btn_delete_brand);
         btnCancel = findViewById(R.id.btn_cancel__brand);
         btnUpdate = findViewById(R.id.btn_update_brand);
+        txtid = findViewById(R.id.txt_id_brand);
         db = AppDatabase.getInstance(this);
         intent = getIntent();
         getBrandById();
@@ -139,7 +141,8 @@ public class sub_brand extends AppCompatActivity {
     }
 
     private void setUpActivity() {
-
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.picture);
+        imageView.setImageBitmap(bitmap);
         if(intent.getIntExtra(MESSAGE,-1) == ADD ){
             btnDelete.setVisibility(View.GONE);
             btnModify.setVisibility(View.GONE);
@@ -170,6 +173,7 @@ public class sub_brand extends AppCompatActivity {
                     edtName.setText(brand.getNameBrand());
                     bitmap = ByteArrayToBitmap(brand.getImageBrand());
                     imageView.setImageBitmap(bitmap);
+                    txtid.setText(Long.toString(brand.getIdBrand()));
                 }
 
 

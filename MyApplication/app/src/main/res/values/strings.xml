@@ -25,4 +25,7 @@
     <string name="login">Login</string>
     <string name="warring_account">User name or password is incorrect. Please re-enter!</string>
     <string name="Sai_Gon_Technology_University">Sai Gon Technology University</string>
+    <string name="list_brand">List brand</string>
+    <string name="list_divice">List divice</string>
+    <string name="id_brand">ID</string>
 </resources>

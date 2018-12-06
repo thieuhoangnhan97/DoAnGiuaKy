@@ -2,6 +2,7 @@ package thieuhoang.nhan.myapplication.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -30,7 +31,7 @@ import static thieuhoang.nhan.myapplication.Constant.*;
 
 
 public class sub_divice extends AppCompatActivity {
-    TextView title,txtNameBrand;
+    TextView title,txtNameBrand,txtid;
     ImageView imageView;
     EditText edtName,edtPrice;
     Spinner spinner;
@@ -144,6 +145,8 @@ public class sub_divice extends AppCompatActivity {
     }
 
     private void setUpActivity() {
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.picture);
+        imageView.setImageBitmap(bitmap);
         if(intent.getIntExtra(MESSAGE,-1) == ADD){
             btnUpdate.setVisibility(View.GONE);
             btnModify.setVisibility(View.GONE);
@@ -175,6 +178,7 @@ public class sub_divice extends AppCompatActivity {
         btnModify = findViewById(R.id.btn_modify_divice);
         btnDelete = findViewById(R.id.btn_delete_divice);
         btnCancel = findViewById(R.id.btn_cancel_divice);
+        txtid = findViewById(R.id.txt_id_divice);
         intent = getIntent();
         db = AppDatabase.getInstance(this);
         getBrandById();
@@ -232,6 +236,7 @@ public class sub_divice extends AppCompatActivity {
                 divice = adivice;
                 Log.d("mylog", String.valueOf(divice));
                 if(divice != null){
+                    txtid.setText(divice.getIdDivice() + "");
                     edtName.setText(divice.getNameDivice());
                     edtPrice.setText(divice.getPriceDivice() + "");
                     for(int i =0; i < arrStorageNumber.size() ;i++){

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class divice extends AppCompatActivity {
     ListView listView;
     AppDatabase db;
     ArrayAdapter adapter;
+    TextView txtNameBrand;
     Intent intent;
     long idbrand;
 
@@ -61,20 +63,7 @@ public class divice extends AppCompatActivity {
     }
 
     private void setUpActivity() {
-        new AsyncTask<Void,Void,List<Divice>>(){
-
-            @Override
-            protected List<Divice> doInBackground(Void... voids) {
-                return db.diviceDao().getDivcesByIDBrand(idbrand);
-            }
-
-            @Override
-            protected void onPostExecute(List<Divice> divices) {
-                super.onPostExecute(divices);
-                adapter.clear();
-                adapter.addAll(divices);
-            }
-        }.execute();
+        getBrandName();
     }
 
     private void setControls() {
@@ -84,6 +73,7 @@ public class divice extends AppCompatActivity {
         listView.setAdapter(adapter);
         intent = getIntent();
         idbrand = intent.getLongExtra(BRAND,0);
+        txtNameBrand = findViewById(R.id.txt_title_brand);
 
     }
 
@@ -129,6 +119,21 @@ public class divice extends AppCompatActivity {
                 super.onPostExecute(divices);
                 adapter.clear();
                 adapter.addAll(divices);
+            }
+        }.execute();
+    }
+    void getBrandName(){
+        new AsyncTask<Void,Void,Brand>(){
+
+            @Override
+            protected Brand doInBackground(Void... voids) {
+                return db.brandDao().getBrandByID(intent.getLongExtra(BRAND,0));
+            }
+
+            @Override
+            protected void onPostExecute(Brand brand) {
+                super.onPostExecute(brand);
+                txtNameBrand.setText(brand.getNameBrand());
             }
         }.execute();
     }

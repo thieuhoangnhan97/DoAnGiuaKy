@@ -23,4 +23,7 @@
     <string name="password">Mật khẫu</string>
     <string name="login">Đăng nhập</string>
     <string name="warring_account">Tên đăng nhập hoặc mật khẫu không đúng. Vui lòng nhập lại!</string>
+    <string name="Sai_Gon_Technology_University">Đại học công nghệ Sài Gòn</string>
+    <string name="list_brand">Danh sách nhãn hiệu</string>
+    <string name="list_divice">Danh sách thiết bị</string>
 </resources>
