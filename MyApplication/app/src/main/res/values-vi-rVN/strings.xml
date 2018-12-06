@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DuAnGiuaKy</string>
+    <string name="name_brand">Tên nhãn hiệu</string>
+    <string name="title_sub_view_add">THÊM</string>
+    <string name="title_btn_add">Thêm</string>
+    <string name="title_btn_save">Lưu</string>
+    <string name="title_btn_delete">Xoá</string>
+    <string name="title_btn_cancel">Huỷ</string>
+    <string name="name_divice">Tên thiết bị</string>
+    <string name="price_divice">Giá thiết bị</string>
+    <string name="storage_divice">Dung lượng bộ nhớ trong</string>
+    <string name="aubout">GIỚI THIỆU</string>
+    <string name="exit">THOÁT</string>
+    <string name="modify">Sửa</string>
+    <string name="delete">Xoá</string>
+    <string name="hello_blank_fragment">Hello</string>
+    <string name="title_btn_modify">Chỉnh sửa</string>
+    <string name="detail">Chi tiết</string>
+    <string name="title_btn_update">Cập nhật</string>
+    <string name="title_activity_maps">Bản đồ</string>
+    <string name="user_name">Tên đăng nhập</string>
+    <string name="password">Mật khẫu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="warring_account">Tên đăng nhập hoặc mật khẫu không đúng. Vui lòng nhập lại!</string>
+</resources>

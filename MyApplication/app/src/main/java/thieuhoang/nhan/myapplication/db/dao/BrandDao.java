@@ -24,7 +24,10 @@ public interface BrandDao {
     int delete(Brand brand);
 
     @Update
-    void update(Brand brand);
+    int update(Brand brand);
+
+    @Query("select * from brand where idBrand == :id")
+    Brand getBrandByID(int id);
     
 
 

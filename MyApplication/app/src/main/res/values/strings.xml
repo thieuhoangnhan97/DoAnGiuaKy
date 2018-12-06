@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">DuAnGiuaKy</string>
+    <string name="app_name">ProjectMidterm</string>
     <string name="name_brand"> Brand name</string>
-    <string name="title_sub_view_add" >ADD</string>
+    <string name="title_sub_view_add">ADD</string>
     <string name="title_btn_add">Add</string>
     <string name="title_btn_save">Save</string>
     <string name="title_btn_delete">delete</string>
@@ -13,4 +13,15 @@
     <string name="exit">EXIT</string>
     <string name="modify">Modify</string>
     <string name="delete">Delete</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_btn_modify">Modify</string>
+    <string name="detail">Detail</string>
+    <string name="title_btn_update">update</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="user_name">User name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="warring_account">User name or password is incorrect. Please re-enter!</string>
 </resources>

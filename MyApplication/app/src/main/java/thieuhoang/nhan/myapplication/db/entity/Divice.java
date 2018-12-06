@@ -1,13 +1,16 @@
 package thieuhoang.nhan.myapplication.db.entity;
 
-import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-@Entity(tableName = "divice")
-public class Divice {
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "divice",foreignKeys = @ForeignKey(entity = Brand.class,parentColumns = "idBrand",childColumns = "idBrandofDivice",onDelete = CASCADE))
+public class Divice implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private long idDivice;
@@ -20,15 +23,15 @@ public class Divice {
 
     private int storageDicie;
 
-    @Embedded
-    private Brand brand;
+    private long idBrandofDivice;
 
-    public Divice(String nameDivice, byte[] imageDivice, long priceDivice, int storageDicie, Brand brand) {
+
+    public Divice(String nameDivice, byte[] imageDivice, long priceDivice, int storageDicie, long idBrandofDivice) {
         this.nameDivice = nameDivice;
         this.imageDivice = imageDivice;
         this.priceDivice = priceDivice;
         this.storageDicie = storageDicie;
-        this.brand = brand;
+        this.idBrandofDivice = idBrandofDivice;
     }
 
     public Divice() {
@@ -74,12 +77,12 @@ public class Divice {
         this.storageDicie = storageDicie;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public long getIdBrandofDivice() {
+        return idBrandofDivice;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setIdBrandofDivice(long idBrandofDivice) {
+        this.idBrandofDivice = idBrandofDivice;
     }
 
     @Override
@@ -90,7 +93,7 @@ public class Divice {
                 ", imageDivice=" + Arrays.toString(imageDivice) +
                 ", priceDivice=" + priceDivice +
                 ", storageDicie=" + storageDicie +
-                ", brand=" + brand +
+                ", idBrandofDivice=" + idBrandofDivice +
                 '}';
     }
 }

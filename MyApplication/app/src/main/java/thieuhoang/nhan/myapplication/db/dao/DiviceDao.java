@@ -22,6 +22,9 @@ public interface DiviceDao {
     int delete(Divice divice);
 
     @Update
-    void update(Divice divice);
+    int update(Divice divice);
+
+    @Query("select * from divice where idBrandofDivice == :idBrand")
+    List<Divice> getDivcesByIDBrand(long idBrand);
 
 }
