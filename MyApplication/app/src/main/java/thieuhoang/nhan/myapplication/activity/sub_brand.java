@@ -1,7 +1,10 @@
 package thieuhoang.nhan.myapplication.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 import thieuhoang.nhan.myapplication.R;
 import thieuhoang.nhan.myapplication.db.AppDatabase;
@@ -25,6 +30,8 @@ public class sub_brand extends AppCompatActivity {
     Button btnSave,btnModify,btnDelete,btnCancel,btnUpdate;
     AppDatabase db;
     Intent intent;
+    Bitmap bitmap;
+    Brand brand;
 
 
 
@@ -74,7 +81,6 @@ public class sub_brand extends AppCompatActivity {
         });
 
         btnUpdate.setOnClickListener(v->{
-            Brand brand = (Brand) intent.getSerializableExtra(BRAND);
             brand.setNameBrand(edtName.getText().toString());
 
             new AsyncTask<Void,Void,Integer>(){
@@ -98,7 +104,6 @@ public class sub_brand extends AppCompatActivity {
         });
 
         btnDelete.setOnClickListener(v->{
-            Brand brand = (Brand) intent.getSerializableExtra(BRAND);
             new AsyncTask<Void,Void,Integer>(){
 
                 @Override
@@ -124,13 +129,13 @@ public class sub_brand extends AppCompatActivity {
         btnDelete = findViewById(R.id.btn_delete_brand);
         btnCancel = findViewById(R.id.btn_cancel__brand);
         btnUpdate = findViewById(R.id.btn_update_brand);
-
+        db = AppDatabase.getInstance(this);
+        intent = getIntent();
 
     }
 
     private void setUpActivity() {
-        db = AppDatabase.getInstance(this);
-        intent = getIntent();
+
         if(intent.getIntExtra(MESSAGE,-1) == ADD ){
             btnDelete.setVisibility(View.GONE);
             btnModify.setVisibility(View.GONE);
@@ -142,17 +147,44 @@ public class sub_brand extends AppCompatActivity {
             btnUpdate.setVisibility(View.GONE);
 
 
-            Brand brand = (Brand) intent.getSerializableExtra(BRAND);
-            edtName.setText(brand.getNameBrand());
+            getBrandById();
         }
 
     }
 
+    void getBrandById(){
+        new AsyncTask<Void,Void,Brand>(){
+
+            @Override
+            protected Brand doInBackground(Void... voids) {
+                return db.brandDao().getBrandByID(intent.getLongExtra(BRAND,0));
+            }
+
+            @Override
+            protected void onPostExecute(Brand abrand) {
+                super.onPostExecute(abrand);
+                brand =  abrand;
+                edtName.setText(brand.getNameBrand());
+
+            }
+        }.execute();
+    }
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        if (requestCode == PICK_IMAGE) {
-            //TODO: action
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                // Log.d(TAG, String.valueOf(bitmap));
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

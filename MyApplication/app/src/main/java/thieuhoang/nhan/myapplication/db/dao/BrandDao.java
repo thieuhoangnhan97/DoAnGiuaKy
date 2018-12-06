@@ -27,7 +27,7 @@ public interface BrandDao {
     int update(Brand brand);
 
     @Query("select * from brand where idBrand == :id")
-    Brand getBrandByID(int id);
+    Brand getBrandByID(long id);
     
 
 

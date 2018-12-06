@@ -62,7 +62,7 @@ public class brand extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(brand.this,divice.class);
                 Brand brand = (Brand) adapter.getItem(position);
-                intent.putExtra(BRAND,brand);
+                intent.putExtra(BRAND,brand.getIdBrand());
                 startActivity(intent);
             }
         });
@@ -71,7 +71,7 @@ public class brand extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(brand.this,sub_brand.class);
                 Brand brand = (Brand) adapter.getItem(position);
-                intent.putExtra(BRAND,brand);
+                intent.putExtra(BRAND,brand.getIdBrand());
                 startActivity(intent);
                 return true;
             }

@@ -28,7 +28,7 @@ public class divice extends AppCompatActivity {
     AppDatabase db;
     ArrayAdapter adapter;
     Intent intent;
-    Brand brand;
+    long idbrand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class divice extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Divice divice = (Divice) adapter.getItem(position);
                 Intent intent = new Intent(divice.this,sub_divice.class);
-                intent.putExtra(DIVICE,divice);
-                intent.putExtra(BRAND,brand);
+                intent.putExtra(DIVICE,divice.getIdDivice());
+                intent.putExtra(BRAND,idbrand);
                 startActivity(intent);
                 return true;
             }
@@ -65,7 +65,7 @@ public class divice extends AppCompatActivity {
 
             @Override
             protected List<Divice> doInBackground(Void... voids) {
-                return db.diviceDao().getDivcesByIDBrand(brand.getIdBrand());
+                return db.diviceDao().getDivcesByIDBrand(idbrand);
             }
 
             @Override
@@ -83,7 +83,7 @@ public class divice extends AppCompatActivity {
         adapter = new adapter_divice(this,R.layout.activity_adapter_divice, new ArrayList<Divice>());
         listView.setAdapter(adapter);
         intent = getIntent();
-        brand = (Brand) intent.getSerializableExtra(BRAND);
+        idbrand = intent.getLongExtra(BRAND,0);
 
     }
 
@@ -99,7 +99,7 @@ public class divice extends AppCompatActivity {
             case R.id.option_menu_add:
                 Intent intent = new Intent(divice.this,sub_divice.class);
                 intent.putExtra(MESSAGE,ADD);
-                intent.putExtra(BRAND,brand);
+                intent.putExtra(BRAND,idbrand);
                 startActivity(intent);
                 break;
             case R.id.option_menu_about:
@@ -121,7 +121,7 @@ public class divice extends AppCompatActivity {
 
             @Override
             protected List<Divice> doInBackground(Void... voids) {
-                return db.diviceDao().getDivcesByIDBrand(brand.getIdBrand());
+                return db.diviceDao().getDivcesByIDBrand(idbrand);
             }
 
             @Override

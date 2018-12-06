@@ -1,7 +1,10 @@
 package thieuhoang.nhan.myapplication.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +41,7 @@ public class sub_divice extends AppCompatActivity {
     Divice divice;
     List<Integer> arrStorageNumber = new ArrayList<>();
     List<String> arrStorageString = new ArrayList<>();
+    Bitmap bitmap;
 
 
     @Override
@@ -47,6 +52,8 @@ public class sub_divice extends AppCompatActivity {
         setUpActivity();
         setEvents();
     }
+
+
 
     private void setEvents() {
         imageView.setOnClickListener(v -> {
@@ -134,8 +141,6 @@ public class sub_divice extends AppCompatActivity {
     }
 
     private void setUpActivity() {
-        Brand brand = (Brand) intent.getSerializableExtra(BRAND);
-        txtNameBrand.setText(brand.getNameBrand());
         if(intent.getIntExtra(MESSAGE,-1) == ADD){
             btnUpdate.setVisibility(View.GONE);
             btnModify.setVisibility(View.GONE);
@@ -147,13 +152,17 @@ public class sub_divice extends AppCompatActivity {
             spinner.setEnabled(false);
             btnSave.setVisibility(View.GONE);
             btnUpdate.setVisibility(View.GONE);
-            edtName.setText(divice.getNameDivice());
-            edtPrice.setText(divice.getPriceDivice() + "");
-            for(int i =0; i < arrStorageNumber.size() ;i++){
-                if(divice.getStorageDicie() == arrStorageNumber.get(i)){
-                    spinner.setSelection(i);
+            if(divice != null){
+                edtName.setText(divice.getNameDivice());
+                edtPrice.setText(divice.getPriceDivice() + "");
+                for(int i =0; i < arrStorageNumber.size() ;i++){
+                    if(divice.getStorageDicie() == arrStorageNumber.get(i)){
+                        spinner.setSelection(i);
+                    }
                 }
             }
+
+
         }
     }
 
@@ -171,8 +180,8 @@ public class sub_divice extends AppCompatActivity {
         btnCancel = findViewById(R.id.btn_cancel_divice);
         intent = getIntent();
         db = AppDatabase.getInstance(this);
-        brand = (Brand) intent.getSerializableExtra(BRAND);
-        divice = (Divice) intent.getSerializableExtra(DIVICE);
+        getBrandById();
+        getDiviceByid();
         arrStorageNumber.add(8);
         arrStorageNumber.add(16);
         arrStorageNumber.add(32);
@@ -192,10 +201,61 @@ public class sub_divice extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        if (requestCode == PICK_IMAGE) {
-            //TODO: action
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                // Log.d(TAG, String.valueOf(bitmap));
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+
+    void getDiviceByid(){
+        new AsyncTask<Void,Void,Divice>(){
+
+            @Override
+            protected Divice doInBackground(Void... voids) {
+                return db.diviceDao().getDiviceById(intent.getLongExtra(DIVICE,0));
+
+
+            }
+
+            @Override
+            protected void onPostExecute(Divice adivice) {
+                super.onPostExecute(adivice);
+                divice = adivice;
+                Log.d("mylog", String.valueOf(divice));
+                setUpActivity();
+
+            }
+        }.execute();
+    }
+
+
+    void getBrandById(){
+        new AsyncTask<Void,Void,Brand>(){
+
+            @Override
+            protected Brand doInBackground(Void... voids) {
+                return db.brandDao().getBrandByID(intent.getLongExtra(BRAND,0));
+            }
+
+            @Override
+            protected void onPostExecute(Brand abrand) {
+                super.onPostExecute(abrand);
+                brand =  abrand;
+                txtNameBrand.setText(brand.getNameBrand());
+
+            }
+        }.execute();
     }
 }
