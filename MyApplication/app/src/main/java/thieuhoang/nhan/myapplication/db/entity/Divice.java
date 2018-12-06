@@ -1,5 +1,6 @@
 package thieuhoang.nhan.myapplication.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
@@ -17,6 +18,7 @@ public class Divice implements Serializable {
 
     private String nameDivice;
 
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] imageDivice;
 
     private long priceDivice;

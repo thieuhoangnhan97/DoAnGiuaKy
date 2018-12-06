@@ -1,5 +1,6 @@
 package thieuhoang.nhan.myapplication.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverter;
@@ -19,6 +20,7 @@ public class Brand implements Serializable{
 
     private String nameBrand;
 
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] imageBrand;
 
 

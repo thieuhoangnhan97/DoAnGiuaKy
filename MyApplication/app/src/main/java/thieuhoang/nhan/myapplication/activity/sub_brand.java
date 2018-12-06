@@ -59,7 +59,7 @@ public class sub_brand extends AppCompatActivity {
 
                 @Override
                 protected Long doInBackground(Void... voids) {
-                    return db.brandDao().insert(new Brand(id,edtName.getText().toString(),null));
+                    return db.brandDao().insert(new Brand(id,edtName.getText().toString(),BitmapToByteArray(bitmap)));
                 }
 
                 @Override
@@ -76,11 +76,14 @@ public class sub_brand extends AppCompatActivity {
             btnDelete.setVisibility(View.GONE);
             edtName.setEnabled(true);
             title.setText(R.string.modify);
+            imageView.setEnabled(true);
+
 
 
         });
 
         btnUpdate.setOnClickListener(v->{
+            brand.setImageBrand(BitmapToByteArray(bitmap));
             brand.setNameBrand(edtName.getText().toString());
 
             new AsyncTask<Void,Void,Integer>(){
@@ -131,6 +134,7 @@ public class sub_brand extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btn_update_brand);
         db = AppDatabase.getInstance(this);
         intent = getIntent();
+        getBrandById();
 
     }
 
@@ -145,9 +149,7 @@ public class sub_brand extends AppCompatActivity {
             btnSave.setVisibility(View.GONE);
             edtName.setEnabled(false);
             btnUpdate.setVisibility(View.GONE);
-
-
-            getBrandById();
+            imageView.setEnabled(false);
         }
 
     }
@@ -164,7 +166,12 @@ public class sub_brand extends AppCompatActivity {
             protected void onPostExecute(Brand abrand) {
                 super.onPostExecute(abrand);
                 brand =  abrand;
-                edtName.setText(brand.getNameBrand());
+                if(brand != null){
+                    edtName.setText(brand.getNameBrand());
+                    bitmap = ByteArrayToBitmap(brand.getImageBrand());
+                    imageView.setImageBitmap(bitmap);
+                }
+
 
             }
         }.execute();

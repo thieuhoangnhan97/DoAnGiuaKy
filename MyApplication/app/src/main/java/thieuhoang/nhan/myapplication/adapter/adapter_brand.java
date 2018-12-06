@@ -16,6 +16,8 @@ import java.util.List;
 import thieuhoang.nhan.myapplication.R;
 import thieuhoang.nhan.myapplication.db.entity.Brand;
 
+import static thieuhoang.nhan.myapplication.Constant.ByteArrayToBitmap;
+
 public class adapter_brand extends ArrayAdapter<Brand> {
     Context context;
     int resource;
@@ -51,6 +53,7 @@ public class adapter_brand extends ArrayAdapter<Brand> {
         }
 
         view.textView.setText(arrBrand.get(position).getNameBrand());
+        view.imageView.setImageBitmap(ByteArrayToBitmap(arrBrand.get(position).getImageBrand()));
 
 
 

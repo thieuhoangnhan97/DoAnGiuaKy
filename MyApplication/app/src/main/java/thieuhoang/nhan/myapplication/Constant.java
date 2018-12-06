@@ -2,7 +2,11 @@ package thieuhoang.nhan.myapplication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
+
+import java.io.ByteArrayOutputStream;
 
 public class Constant {
     public  static final int ADD = 1;
@@ -34,5 +38,15 @@ public class Constant {
         editor.commit();
     }
 
+
+    public static byte[] BitmapToByteArray(Bitmap bitmap){
+        ByteArrayOutputStream blob = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0 /* Ignored for PNGs */, blob);
+        return blob.toByteArray();
+    }
+
+    public static Bitmap ByteArrayToBitmap(byte[] bytes){
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    }
 
 }

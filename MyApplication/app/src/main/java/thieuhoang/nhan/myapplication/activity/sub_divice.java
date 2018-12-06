@@ -70,7 +70,7 @@ public class sub_divice extends AppCompatActivity {
 
                 @Override
                 protected Long doInBackground(Void... voids) {
-                    return db.diviceDao().insert(new Divice(id,edtName.getText().toString(),null,Long.parseLong(edtPrice.getText().toString()),arrStorageNumber.get(spinner.getSelectedItemPosition()),brand.getIdBrand()));
+                    return db.diviceDao().insert(new Divice(id,edtName.getText().toString(),BitmapToByteArray(bitmap),Long.parseLong(edtPrice.getText().toString()),arrStorageNumber.get(spinner.getSelectedItemPosition()),brand.getIdBrand()));
 
                 }
 
@@ -93,6 +93,8 @@ public class sub_divice extends AppCompatActivity {
             btnUpdate.setVisibility(View.VISIBLE);
             btnModify.setVisibility(View.GONE);
             btnDelete.setVisibility(View.GONE);
+            imageView.setEnabled(true);
+
 
         });
 
@@ -100,6 +102,7 @@ public class sub_divice extends AppCompatActivity {
             divice.setNameDivice(edtName.getText().toString());
             divice.setPriceDivice(Long.parseLong(edtPrice.getText().toString()));
             divice.setStorageDicie(arrStorageNumber.get(spinner.getSelectedItemPosition()));
+            divice.setImageDivice(BitmapToByteArray(bitmap));
 
             new AsyncTask<Void,Void,Integer>(){
 
@@ -152,15 +155,9 @@ public class sub_divice extends AppCompatActivity {
             spinner.setEnabled(false);
             btnSave.setVisibility(View.GONE);
             btnUpdate.setVisibility(View.GONE);
-            if(divice != null){
-                edtName.setText(divice.getNameDivice());
-                edtPrice.setText(divice.getPriceDivice() + "");
-                for(int i =0; i < arrStorageNumber.size() ;i++){
-                    if(divice.getStorageDicie() == arrStorageNumber.get(i)){
-                        spinner.setSelection(i);
-                    }
-                }
-            }
+            imageView.setEnabled(false);
+
+
 
 
         }
@@ -234,7 +231,16 @@ public class sub_divice extends AppCompatActivity {
                 super.onPostExecute(adivice);
                 divice = adivice;
                 Log.d("mylog", String.valueOf(divice));
-                setUpActivity();
+                if(divice != null){
+                    edtName.setText(divice.getNameDivice());
+                    edtPrice.setText(divice.getPriceDivice() + "");
+                    for(int i =0; i < arrStorageNumber.size() ;i++){
+                        if(divice.getStorageDicie() == arrStorageNumber.get(i)){
+                            spinner.setSelection(i);
+                        }
+                    }
+                    imageView.setImageBitmap(ByteArrayToBitmap(divice.getImageDivice()));
+                }
 
             }
         }.execute();

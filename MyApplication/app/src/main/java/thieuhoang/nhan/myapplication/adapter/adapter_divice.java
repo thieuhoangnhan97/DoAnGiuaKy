@@ -16,6 +16,8 @@ import java.util.List;
 import thieuhoang.nhan.myapplication.R;
 import thieuhoang.nhan.myapplication.db.entity.Divice;
 
+import static thieuhoang.nhan.myapplication.Constant.ByteArrayToBitmap;
+
 public class adapter_divice extends ArrayAdapter<Divice> {
 
     Context context;
@@ -49,6 +51,7 @@ public class adapter_divice extends ArrayAdapter<Divice> {
 
         view.nameDivice.setText(arrDivice.get(position).getNameDivice());
         view.priceDivice.setText( getContext().getResources().getString(R.string.price_divice)  + ": "+ arrDivice.get(position).getPriceDivice() + " VND");
+        view.imageView.setImageBitmap(ByteArrayToBitmap(arrDivice.get(position).getImageDivice()));
 
 
 
