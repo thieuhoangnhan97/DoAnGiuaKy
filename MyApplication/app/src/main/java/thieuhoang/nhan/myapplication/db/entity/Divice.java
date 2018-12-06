@@ -12,7 +12,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 @Entity(tableName = "divice",foreignKeys = @ForeignKey(entity = Brand.class,parentColumns = "idBrand",childColumns = "idBrandofDivice",onDelete = CASCADE))
 public class Divice implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long idDivice;
 
     private String nameDivice;
@@ -26,7 +26,8 @@ public class Divice implements Serializable {
     private long idBrandofDivice;
 
 
-    public Divice(String nameDivice, byte[] imageDivice, long priceDivice, int storageDicie, long idBrandofDivice) {
+    public Divice(long id,String nameDivice, byte[] imageDivice, long priceDivice, int storageDicie, long idBrandofDivice) {
+        this.idDivice = id;
         this.nameDivice = nameDivice;
         this.imageDivice = imageDivice;
         this.priceDivice = priceDivice;

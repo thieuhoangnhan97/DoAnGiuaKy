@@ -20,9 +20,8 @@ import thieuhoang.nhan.myapplication.db.AppDatabase;
 import thieuhoang.nhan.myapplication.db.entity.Brand;
 import thieuhoang.nhan.myapplication.db.entity.Divice;
 
-import static thieuhoang.nhan.myapplication.activity.brand.ADD;
-import static thieuhoang.nhan.myapplication.activity.brand.BRAND;
-import static thieuhoang.nhan.myapplication.activity.brand.MESSAGE;
+import static thieuhoang.nhan.myapplication.Constant.*;
+
 
 public class divice extends AppCompatActivity {
     ListView listView;
@@ -30,7 +29,6 @@ public class divice extends AppCompatActivity {
     ArrayAdapter adapter;
     Intent intent;
     Brand brand;
-    public static final String DIVICE = "divice";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

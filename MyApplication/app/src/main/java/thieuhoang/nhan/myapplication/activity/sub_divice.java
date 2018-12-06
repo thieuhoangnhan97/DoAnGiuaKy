@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,11 +22,8 @@ import thieuhoang.nhan.myapplication.db.AppDatabase;
 import thieuhoang.nhan.myapplication.db.entity.Brand;
 import thieuhoang.nhan.myapplication.db.entity.Divice;
 
-import static thieuhoang.nhan.myapplication.activity.brand.ADD;
-import static thieuhoang.nhan.myapplication.activity.brand.BRAND;
-import static thieuhoang.nhan.myapplication.activity.brand.MESSAGE;
-import static thieuhoang.nhan.myapplication.activity.divice.DIVICE;
-import static thieuhoang.nhan.myapplication.activity.sub_brand.PICK_IMAGE;
+import static thieuhoang.nhan.myapplication.Constant.*;
+
 
 public class sub_divice extends AppCompatActivity {
     TextView title,txtNameBrand;
@@ -59,12 +57,13 @@ public class sub_divice extends AppCompatActivity {
         });
 
         btnSave.setOnClickListener(v->{
-
+            long id = loadCount(this);
+            Log.d("mylog", String.valueOf(id));
             new AsyncTask<Void,Void,Long>(){
 
                 @Override
                 protected Long doInBackground(Void... voids) {
-                    return db.diviceDao().insert(new Divice(edtName.getText().toString(),null,Long.parseLong(edtPrice.getText().toString()),arrStorageNumber.get(spinner.getSelectedItemPosition()),brand.getIdBrand()));
+                    return db.diviceDao().insert(new Divice(id,edtName.getText().toString(),null,Long.parseLong(edtPrice.getText().toString()),arrStorageNumber.get(spinner.getSelectedItemPosition()),brand.getIdBrand()));
 
                 }
 

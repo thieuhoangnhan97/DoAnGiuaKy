@@ -27,4 +27,7 @@ public interface DiviceDao {
     @Query("select * from divice where idBrandofDivice == :idBrand")
     List<Divice> getDivcesByIDBrand(long idBrand);
 
+    @Query("select * from divice where idDivice == :id")
+    Divice getDiviceById(long id);
+
 }

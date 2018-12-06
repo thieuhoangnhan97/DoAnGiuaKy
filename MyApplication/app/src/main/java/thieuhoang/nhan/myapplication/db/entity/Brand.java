@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity(tableName = "brand")
 public class Brand implements Serializable{
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long idBrand;
 
     private String nameBrand;
@@ -23,11 +23,8 @@ public class Brand implements Serializable{
 
 
 
-
-
-
-
-    public Brand(String nameBrand, byte[] imageBrand) {
+    public Brand(long id,String nameBrand, byte[] imageBrand) {
+        this.idBrand = id;
         this.nameBrand = nameBrand;
         this.imageBrand = imageBrand;
     }

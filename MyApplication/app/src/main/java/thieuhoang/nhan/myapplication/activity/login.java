@@ -6,6 +6,8 @@
 package thieuhoang.nhan.myapplication.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -17,6 +19,15 @@ import thieuhoang.nhan.myapplication.R;
 public class login extends AppCompatActivity {
     EditText edtUserName,edtPassword;
     Button btnLogin;
+    public static String username;
+    public static String pw;
+
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

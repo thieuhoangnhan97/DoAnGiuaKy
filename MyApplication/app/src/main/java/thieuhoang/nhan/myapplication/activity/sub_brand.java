@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,17 +15,14 @@ import thieuhoang.nhan.myapplication.R;
 import thieuhoang.nhan.myapplication.db.AppDatabase;
 import thieuhoang.nhan.myapplication.db.entity.Brand;
 
-import static thieuhoang.nhan.myapplication.activity.brand.ADD;
-import static thieuhoang.nhan.myapplication.activity.brand.BRAND;
-import static thieuhoang.nhan.myapplication.activity.brand.MESSAGE;
-import static thieuhoang.nhan.myapplication.activity.brand.POSITION;
+import static thieuhoang.nhan.myapplication.Constant.*;
+
 
 public class sub_brand extends AppCompatActivity {
     TextView title;
     ImageView imageView;
     EditText edtName;
     Button btnSave,btnModify,btnDelete,btnCancel,btnUpdate;
-    public static final int PICK_IMAGE = 1;
     AppDatabase db;
     Intent intent;
 
@@ -48,11 +46,13 @@ public class sub_brand extends AppCompatActivity {
         });
 
         btnSave.setOnClickListener(v -> {
+            long id = loadCount(this);
+            Log.d("mylog", String.valueOf(id));
             new AsyncTask<Void,Void,Long>(){
 
                 @Override
                 protected Long doInBackground(Void... voids) {
-                    return db.brandDao().insert(new Brand(edtName.getText().toString(),null));
+                    return db.brandDao().insert(new Brand(id,edtName.getText().toString(),null));
                 }
 
                 @Override

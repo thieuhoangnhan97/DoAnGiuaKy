@@ -1,7 +1,10 @@
 package thieuhoang.nhan.myapplication.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,18 +24,22 @@ import thieuhoang.nhan.myapplication.adapter.adapter_brand;
 import thieuhoang.nhan.myapplication.db.AppDatabase;
 import thieuhoang.nhan.myapplication.db.entity.Brand;
 
+import static thieuhoang.nhan.myapplication.Constant.*;
+
+
 public class brand extends AppCompatActivity {
     ListView listView;
     Fragment fragment;
     AppDatabase db;
     ArrayAdapter adapter;
-    public  static final int ADD = 1;
-    public  static final String POSITION = "position";
-    public  static final String MESSAGE = "message";
-    public  static final String BRAND = "brand";
 
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    }
 
     @Override
     protected void onStart() {
@@ -120,7 +127,6 @@ public class brand extends AppCompatActivity {
                 super.onPostExecute(brands);
                 adapter.clear();
                 adapter.addAll(brands);
-
             }
         }.execute();
     }
