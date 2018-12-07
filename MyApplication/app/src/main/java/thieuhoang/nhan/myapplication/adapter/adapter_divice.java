@@ -42,6 +42,9 @@ public class adapter_divice extends ArrayAdapter<Divice> {
             view.imageView = convertView.findViewById(R.id.image_adapter_divice);
             view.nameDivice = convertView.findViewById(R.id.txt_name_adapter_divice);
             view.priceDivice = convertView.findViewById(R.id.txt_price_adapter_divice);
+            view.txtID = convertView.findViewById(R.id.txt_id_adapter_divice);
+
+
 
             convertView.setTag(view);
 
@@ -49,9 +52,10 @@ public class adapter_divice extends ArrayAdapter<Divice> {
             view = (ViewHolderDivice) convertView.getTag();
         }
 
-        view.nameDivice.setText(arrDivice.get(position).getNameDivice());
+        view.nameDivice.setText(getContext().getResources().getString(R.string.name) + ": "+ arrDivice.get(position).getNameDivice());
         view.priceDivice.setText( getContext().getResources().getString(R.string.price_divice)  + ": "+ arrDivice.get(position).getPriceDivice() + " VND");
         view.imageView.setImageBitmap(ByteArrayToBitmap(arrDivice.get(position).getImageDivice()));
+        view.txtID.setText( getContext().getResources().getString(R.string.id_brand) + ": "+ arrDivice.get(position).getIdDivice());
 
 
 
@@ -65,4 +69,5 @@ class ViewHolderDivice {
     ImageView imageView;
     TextView nameDivice;
     TextView priceDivice;
+    TextView txtID;
 }

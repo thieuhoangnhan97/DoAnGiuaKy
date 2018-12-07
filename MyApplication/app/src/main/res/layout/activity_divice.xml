@@ -7,18 +7,16 @@
     tools:context=".activity.divice"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/image_title_brand"
+        />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="@string/list_divice"
-        android:textSize="30sp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:id="@+id/txt_title_brand"
-        android:textSize="30sp"/>
+        android:layout_height="5dp"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

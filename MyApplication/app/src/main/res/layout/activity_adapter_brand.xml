@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".adapter.adapter_brand"
-    android:orientation="horizontal"
-    android:layout_margin="10dp">
+    >
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/image_adapter_brand"
-        android:layout_marginRight="50dp"/>
-
-    <TextView
-        android:textSize="30sp"
+    <TableRow
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/txt_name_adapter_brand"/>
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/image_adapter_brand"
+            android:layout_weight="0.3"
+            />
+        <TextView
+            android:layout_weight="0.3"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txt_id_adapter_brand"/>
+        <TextView
+            android:layout_weight="0.4"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txt_name_adapter_brand"/>
 
-</LinearLayout>
+    </TableRow>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"/>
+
+
+
+</TableLayout>

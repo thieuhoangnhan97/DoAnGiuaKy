@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,7 +29,7 @@ public class divice extends AppCompatActivity {
     ListView listView;
     AppDatabase db;
     ArrayAdapter adapter;
-    TextView txtNameBrand;
+    ImageView imageView;
     Intent intent;
     long idbrand;
 
@@ -73,7 +74,7 @@ public class divice extends AppCompatActivity {
         listView.setAdapter(adapter);
         intent = getIntent();
         idbrand = intent.getLongExtra(BRAND,0);
-        txtNameBrand = findViewById(R.id.txt_title_brand);
+        imageView = findViewById(R.id.image_title_brand);
 
     }
 
@@ -133,7 +134,7 @@ public class divice extends AppCompatActivity {
             @Override
             protected void onPostExecute(Brand brand) {
                 super.onPostExecute(brand);
-                txtNameBrand.setText(brand.getNameBrand());
+                imageView.setImageBitmap(ByteArrayToBitmap(brand.getImageBrand()));
             }
         }.execute();
     }

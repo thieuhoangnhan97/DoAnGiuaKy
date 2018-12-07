@@ -7,12 +7,48 @@
     tools:context=".activity.brand"
     android:orientation="vertical">
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <TableRow>
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:layout_weight="0.3"
+                    android:text="@string/image"
+                    />
+
+                <TextView
+                    android:textStyle="bold"
+                    android:background="@color/common_google_signin_btn_text_light_disabled"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+
+                    android:text="@string/id_brand"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_weight="0.4"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/name"/>
+
+            </TableRow>
+    </TableLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="@string/list_brand"
-        android:textSize="30sp"/>
+        android:layout_height="5dp"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"/>
+
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -43,6 +43,7 @@ public class adapter_brand extends ArrayAdapter<Brand> {
 
             view.imageView = convertView.findViewById(R.id.image_adapter_brand);
             view.textView = convertView.findViewById(R.id.txt_name_adapter_brand);
+            view.txtID = convertView.findViewById(R.id.txt_id_adapter_brand);
 
             convertView.setTag(view);
 
@@ -54,6 +55,7 @@ public class adapter_brand extends ArrayAdapter<Brand> {
 
         view.textView.setText(arrBrand.get(position).getNameBrand());
         view.imageView.setImageBitmap(ByteArrayToBitmap(arrBrand.get(position).getImageBrand()));
+        view.txtID.setText("" + arrBrand.get(position).getIdBrand());
 
 
 
@@ -65,4 +67,5 @@ public class adapter_brand extends ArrayAdapter<Brand> {
 class ViewHolderBrand {
     ImageView imageView;
     TextView textView;
+    TextView txtID;
 }

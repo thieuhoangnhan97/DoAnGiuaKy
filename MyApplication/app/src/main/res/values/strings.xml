@@ -13,9 +13,6 @@
     <string name="exit">EXIT</string>
     <string name="modify">Modify</string>
     <string name="delete">Delete</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_btn_modify">Modify</string>
     <string name="detail">Detail</string>
     <string name="title_btn_update">update</string>
@@ -24,9 +21,14 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="warring_account">User name or password is incorrect. Please re-enter!</string>
-    <string name="Sai_Gon_Technology_University">Sai Gon Technology University</string>
     <string name="list_brand">List brand</string>
     <string name="list_divice">List divice</string>
     <string name="id_brand">ID</string>
     <string name="warring_delete_brand">Brand has some divice. Can\'t delete!!!</string>
+    <string name="name">Name</string>
+    <string name="image">Image</string>
+    <string name="name_student">Student name: Thiều Hoàng Nhân</string>
+    <string name="class_student">Class: D15-TH10</string>
+    <string name="id_student">Student ID: DH51501245</string>
+    <string name="Sai_Gon_Technology_University">Sai Gon Technology University</string>
 </resources>

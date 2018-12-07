@@ -8,6 +8,26 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/name_student"
+        android:textSize="20sp"/>
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/class_student"
+        android:textSize="20sp"/>
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/id_student"
+        android:textSize="20sp"
+        android:layout_marginBottom="30dp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

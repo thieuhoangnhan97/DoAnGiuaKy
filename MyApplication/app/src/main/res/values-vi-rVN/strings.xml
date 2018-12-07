@@ -14,7 +14,6 @@
     <string name="exit">THOÁT</string>
     <string name="modify">Sửa</string>
     <string name="delete">Xoá</string>
-    <string name="hello_blank_fragment">Hello</string>
     <string name="title_btn_modify">Chỉnh sửa</string>
     <string name="detail">Chi tiết</string>
     <string name="title_btn_update">Cập nhật</string>
@@ -23,9 +22,15 @@
     <string name="password">Mật khẫu</string>
     <string name="login">Đăng nhập</string>
     <string name="warring_account">Tên đăng nhập hoặc mật khẫu không đúng. Vui lòng nhập lại!</string>
-    <string name="Sai_Gon_Technology_University">Đại học công nghệ Sài Gòn</string>
     <string name="list_brand">Danh sách nhãn hiệu</string>
     <string name="list_divice">Danh sách thiết bị</string>
     <string name="id_brand">Mã</string>
-    <string name="warring_delete_brand">"Nhãn hiệu có một số thiết. Không thể xoá! bị "</string>
+    <string name="warring_delete_brand">Nhãn hiệu có chứa thiết bị. Không thể xoá!!</string>
+    <string name="name">Tên</string>
+    <string name="image">Hình</string>
+    <string name="name_student">Tên sinh viên: Thiều Hoàng Nhân</string>
+    <string name="class_student">Lớp: D15-TH10</string>
+    <string name="id_student">MSSV: DH51501245</string>
+    <string name="Sai_Gon_Technology_University">Trường đại học Công Nghệ Sài Sòn</string>
+
 </resources>
